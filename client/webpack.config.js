@@ -3,8 +3,7 @@ const WebpackPwaManifest = require('webpack-pwa-manifest');
 const path = require('path');
 const { InjectManifest } = require('workbox-webpack-plugin');
 
-// TODO: Add and configure workbox plugins for a service worker and manifest file.
-// TODO: Add CSS loaders and babel to webpack.
+
 
 module.exports = () => {
   return {
@@ -17,6 +16,7 @@ module.exports = () => {
       filename: '[name].bundle.js',
       path: path.resolve(__dirname, 'dist'),
     },
+    // Pulled in required plugins.
     plugins: [
       new HtmlWebpackPlugin({
         template: './index.html',
@@ -26,6 +26,7 @@ module.exports = () => {
         swSrc: './src-sw.js',
         swDest: 'src-sw.js',
       }), 
+      // Added some personalization
       new WebpackPwaManifest({
         fingerprints: false,
         inject: true,
@@ -33,7 +34,7 @@ module.exports = () => {
         short_name: 'Text Editor',
         description: 'Just another Text Editor',
         background_color: '#33e0ff',
-        theme_color: '#7eb4e2',
+        theme_color: '#4C24E1',
         start_url: './',
         publicPath: './',
         icons: [
